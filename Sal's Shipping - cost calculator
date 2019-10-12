@@ -1,0 +1,41 @@
+## Variables
+prem_ship = 125
+## Functions
+def ground_shipping(weight):
+  if weight <= 2:
+    cost = (weight * 1.5)
+  if weight > 2 and weight <= 6:
+    cost = (weight * 3)
+  if weight > 6 and weight <= 10:
+    cost = (weight * 4)
+  if weight > 10:
+    cost = (weight * 4.75)
+  cost += 20
+  return cost
+
+def drone_shipping(weight):
+  if weight <= 2:
+    cost = (weight * 4.5)
+  if weight > 2 and weight <= 6:
+    cost = (weight * 9)
+  if weight > 6 and weight <= 10:
+    cost = (weight * 12)
+  if weight > 10:
+    cost = (weight * 14.25)
+  return cost
+
+def cost_compare(weight):
+  ground = ground_shipping(weight)
+  drone = drone_shipping(weight)
+
+  if ground < drone and ground < prem_ship:
+    cost = ground
+    print("Ground shipping is the cheapest method, it will cost $"+str(cost))
+
+  if drone < ground and drone < prem_ship:
+    cost = drone
+    print("Drone shipping is the cheapest method, it will cost $"+str(cost))
+
+  if prem_ship < ground and prem_ship < drone:
+    cost = prem_ship
+    print("Premium shipping is the cheapest method, it will cost $"+str(cost))
