@@ -1,0 +1,62 @@
+from random import choice
+import sys
+
+# Game start/win/loss messages and flip count #
+welcome = "Welcome to Coin Flip"
+game_start = "Please enter your guess (heads or tails)"
+game_win = "Congratulations! You guessed correctly! Would you like to play again? (y/n)"
+game_loss = "Uh Oh! Unfortunately that was incorrect :( "
+recordlist = []
+
+
+def coin_flip():
+    global recordlist
+    print(welcome)
+    print(game_start)
+    guess = input()
+    flip = choice(("heads", "tails"))
+    print(flip)
+    print(guess)
+    if guess == flip == "tails":
+        recordlist.append("tails")
+        print(game_win)
+        print("The current coin flip count is " + str(recordlist.count("heads")) + " heads and " + str(
+            recordlist.count("tails")) + " tails.")
+        cont = input("Would you like to play again? (y/n)")
+        if cont == "y":
+            coin_flip()
+        if cont == "n":
+            sys.exit("Thanks for playing! Goodbye!")
+    if guess == flip == "heads":
+        recordlist.append("heads")
+        print(game_win)
+        print("The current coin flip count is " + str(recordlist.count("heads")) + " heads and " + str(
+            recordlist.count("tails")) + " tails.")
+        cont = input("Would you like to play again? (y/n)")
+        if cont == "y":
+            coin_flip()
+        if cont == "n":
+            sys.exit("Thanks for playing! Goodbye!")
+    if guess != flip == "tails":
+        recordlist.append("tails")
+        print(game_loss)
+        print("The current coin flip count is " + str(recordlist.count("heads")) + " heads and " + str(
+            recordlist.count("tails")) + " tails.")
+        cont = input("Would you like to play again? (y/n)")
+        if cont == "y":
+            coin_flip()
+        if cont == "n":
+            sys.exit("Thanks for playing! Goodbye!")
+    if guess != flip == "heads":
+        recordlist.append("heads")
+        print(game_loss)
+        print("The current coin flip count is " + str(recordlist.count("heads")) + " heads and " + str(
+            recordlist.count("tails")) + " tails.")
+        cont = input("Would you like to play again? (y/n)")
+        if cont == "y":
+            coin_flip()
+        if cont == "n":
+            sys.exit("Thanks for playing! Goodbye!")
+
+
+coin_flip()
