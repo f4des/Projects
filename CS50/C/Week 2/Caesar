@@ -1,0 +1,34 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int k, n, pti, p_len;
+string pt, ct;
+int main(int argc, string argv[])
+{
+    n = strlen(argv[1]); // Saves the length of the Key
+    if (argc > 2)    // Checks if input is greater than one number
+    {
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++)    // Validates input is exclusively integers
+    {
+        if (!isdigit(argv[1][i]))
+        {
+            printf("Letters are not accepted input. Usage is \"./caesar key\", where key is an integer. \n");
+            return 1;
+        }
+    }
+    k = atoi(argv[1]); //Converts "Key" to an integer variable
+    pt = get_string("plaintext: ");
+    p_len = strlen(pt);
+    printf("ciphertext: ");
+    for (int i = 0; i < p_len; i++)
+    {
+        printf("%c", pt[i] + k);
+    }
+    printf("\n");
+}
